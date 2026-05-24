@@ -27,33 +27,80 @@
                             @csrf
 
                             <div class="form-row">
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label for="reference">Reference <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="reference" required readonly value="SL">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="from-group">
-                                        <div class="form-group">
-                                            <label for="customer_id">Customer <span class="text-danger">*</span></label>
-                                            <select class="form-control" name="customer_id" id="customer_id" required>
-                                                @foreach(\Modules\People\Entities\Customer::all() as $customer)
-                                                    <option value="{{ $customer->id }}">{{ $customer->customer_name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="from-group">
-                                        <div class="form-group">
-                                            <label for="date">Date <span class="text-danger">*</span></label>
-                                            <input type="date" class="form-control" name="date" required value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+								<div class="col-lg-3">
+									<div class="form-group">
+										<label for="reference">Reference <span class="text-danger">*</span></label>
+
+										<input type="text"
+											   class="form-control"
+											   name="reference"
+											   required
+											   readonly
+											   value="SL">
+									</div>
+								</div>
+
+								<div class="col-lg-3">
+									<div class="form-group">
+										<label for="location_id">Location <span class="text-danger">*</span></label>
+
+										<select class="form-control"
+												name="location_id"
+												id="location_id"
+												required>
+
+											<option value="">Select Location</option>
+
+											@foreach(\App\Models\Location::all() as $location)
+
+												<option value="{{ $location->id }}">
+													{{ $location->name }}
+												</option>
+
+											@endforeach
+
+										</select>
+									</div>
+								</div>
+
+								<div class="col-lg-3">
+									<div class="from-group">
+										<div class="form-group">
+											<label for="customer_id">Customer <span class="text-danger">*</span></label>
+
+											<select class="form-control"
+													name="customer_id"
+													id="customer_id"
+													required>
+
+												@foreach(\Modules\People\Entities\Customer::all() as $customer)
+
+													<option value="{{ $customer->id }}">
+														{{ $customer->customer_name }}
+													</option>
+
+												@endforeach
+
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-lg-3">
+									<div class="from-group">
+										<div class="form-group">
+											<label for="date">Date <span class="text-danger">*</span></label>
+
+											<input type="date"
+												   class="form-control"
+												   name="date"
+												   required
+												   value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
+										</div>
+									</div>
+								</div>
+
+							</div>
 
                             <livewire:product-cart :cartInstance="'sale'"/>
 

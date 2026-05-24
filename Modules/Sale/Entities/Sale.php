@@ -56,4 +56,5 @@ class Sale extends Model
     public function getDiscountAmountAttribute($value) {
         return $value / 100;
     }
+	
 }

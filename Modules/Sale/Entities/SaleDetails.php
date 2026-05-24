@@ -42,4 +42,9 @@ class SaleDetails extends Model
     public function getProductTaxAmountAttribute($value) {
         return $value / 100;
     }
+	
+	public function location()
+	{
+		return $this->belongsTo(\App\Models\Location::class);
+	}
 }
