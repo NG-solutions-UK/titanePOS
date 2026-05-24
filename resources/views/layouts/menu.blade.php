@@ -4,7 +4,6 @@
     </a>
 </li>
 
-@can('access_locations')
 <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('locations.*') || request()->routeIs('locations.*') ? 'c-show' : '' }}">
     <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
         <i class="c-sidebar-nav-icon bi bi-journal-bookmark" style="line-height: 1;"></i> Locations
@@ -24,7 +23,6 @@
         </li>
     </ul>
 </li>
-@endcan
 
 @can('access_products')
 <li class="c-sidebar-nav-item c-sidebar-nav-dropdown {{ request()->routeIs('products.*') || request()->routeIs('product-categories.*') ? 'c-show' : '' }}">
