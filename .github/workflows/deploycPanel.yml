@@ -11,7 +11,7 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v3
       - name: Install Dependencies
-        run: composer update --ignore-platform-reqs
+        run: composer install --ignore-platform-reqs
       - name: Install NPM
         run: npm install
       - name: NPM Production
@@ -23,6 +23,8 @@ jobs:
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+	uses: shivammathur/setup-php@v2
+	uses: actions/setup-node@v4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
