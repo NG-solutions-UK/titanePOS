@@ -1,0 +1,31 @@
+on:
+  push:
+    branches:
+      - dev
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: self-hosted
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: composer update --ignore-platform-reqs
+      - name: Install NPM
+        run: npm install
+      - name: NPM Production
+        run: npm run production
+      - name: Optimize
+        run: php artisan optimize:clear
+      - name: Directory Permissions
+        run: chmod -R 777 storage bootstrap/cache
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /lms.guardianscorporate.co.uk/
+          protocol: ftp
