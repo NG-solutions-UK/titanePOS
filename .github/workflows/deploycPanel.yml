@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - dev
+      - main
 name: 🚀 Deploy website on push
 jobs:
   web-deploy:
@@ -27,5 +27,5 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /lms.guardianscorporate.co.uk/
+          server-dir: /demo.titanepos.com/
           protocol: ftp
