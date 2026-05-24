@@ -74,6 +74,7 @@ class UsersController extends Controller
             }
 
             toast("User Created & Assigned '$request->role' Role!", 'success');
+			return redirect()->route('users.index');
         
     }
 
