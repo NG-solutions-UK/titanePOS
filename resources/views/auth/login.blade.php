@@ -84,7 +84,7 @@
 
             <p class="text-center mt-5 lead">
                 Product by
-                <a href="https://www.shapestechnology.com" class="font-weight-bold text-primary">Shapes Technology</a>
+                <a href="https://ng-solutions.co.uk/" class="font-weight-bold text-primary">NG Solutions</a>
             </p>
         </div>
     </div>
