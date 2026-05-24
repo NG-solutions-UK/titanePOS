@@ -45,11 +45,15 @@ class UsersController extends Controller
         $userCount = User::count();
 
         // Check if company_user is greater than or equal to the total user count
-        if ($company->company_user <= $userCount) {
+        /* if ($company->company_user <= $userCount) {
             return back()->withErrors('The number of users exceeds the allowed limit.');
         }else {
             
-            $user = User::create([
+
+            return redirect()->route('users.index');
+        }*/
+		
+		$user = User::create([
                 'name'     => $request->name,
                 'email'    => $request->email,
                 'password' => Hash::make($request->password),
@@ -70,9 +74,6 @@ class UsersController extends Controller
             }
 
             toast("User Created & Assigned '$request->role' Role!", 'success');
-
-            return redirect()->route('users.index');
-        }
         
     }
 
