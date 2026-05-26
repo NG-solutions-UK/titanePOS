@@ -41,34 +41,6 @@
 								</div>
 
 								<div class="col-lg-3">
-									<div class="form-group">
-										<label for="location_id">
-											Location <span class="text-danger">*</span>
-										</label>
-
-										<select class="form-control"
-												name="location_id"
-												id="location_id"
-												required>
-
-											<option value="">Select Location</option>
-
-											@foreach(\App\Models\Location::all() as $location)
-
-												<option value="{{ $location->id }}"
-													{{ old('location_id', $sale->location_id ?? '') == $location->id ? 'selected' : '' }}>
-
-													{{ $location->name }}
-
-												</option>
-
-											@endforeach
-
-										</select>
-									</div>
-								</div>
-
-								<div class="col-lg-3">
 									<div class="from-group">
 										<div class="form-group">
 											<label for="customer_id">Customer <span class="text-danger">*</span></label>

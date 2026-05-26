@@ -77,7 +77,7 @@ class SaleController extends Controller
                     'product_discount_amount' => $cart_item->options->product_discount * 100,
                     'product_discount_type' => $cart_item->options->product_discount_type,
                     'product_tax_amount' => $cart_item->options->product_tax * 100,
-					'location_id' => $cart_item->location_id,
+					'location_id' => session('location_id'),
                 ]);
 
                 if ($request->status == 'Shipped' || $request->status == 'Completed') {
@@ -131,7 +131,7 @@ class SaleController extends Controller
                 'name'    => $sale_detail->product_name,
                 'qty'     => $sale_detail->quantity,
                 'price'   => $sale_detail->price,
-				'location_id' => $sale_detail->location_id,
+				'location_id' => session('location_id'),
                 'weight'  => 1,
                 'options' => [
                     'product_discount' => $sale_detail->product_discount_amount,
@@ -204,7 +204,7 @@ class SaleController extends Controller
                     'product_discount_amount' => $cart_item->options->product_discount * 100,
                     'product_discount_type' => $cart_item->options->product_discount_type,
                     'product_tax_amount' => $cart_item->options->product_tax * 100,
-					'location_id' => $cart_item->location_id,
+					'location_id' => session('location_id'),
                 ]);
 
                 if ($request->status == 'Shipped' || $request->status == 'Completed') {
