@@ -61,6 +61,27 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+						
+						<div class="form-group mb-3">
+							<label for="location_id">
+								Select Location
+							</label>
+
+							<select name="location_id"
+									id="location_id"
+									class="form-control"
+									required>
+								<option value="">
+									Select Location
+								</option>
+								@foreach(\App\Models\Location::all() as $location)
+									<option value="{{ $location->id }}">
+										{{ $location->name }}
+									</option>
+								@endforeach
+							</select>
+						</div>
+						
                         <div class="row">
                             <div class="col-4">
                                 <button id="submit" class="btn btn-primary px-4 d-flex align-items-center"

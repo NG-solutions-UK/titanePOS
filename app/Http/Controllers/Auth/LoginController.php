@@ -41,6 +41,10 @@ class LoginController extends Controller
     }
 
     protected function authenticated(Request $request, $user) {
+		session([
+			'location_id' => $request->location_id
+		]);
+
         if ($user->is_active != 1) {
             Auth::logout();
 
