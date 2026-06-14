@@ -22,6 +22,7 @@ class ProductCart extends Component
     public $item_discount;
     public $unit_price;
     public $data;
+	
 
     private $product;
 
