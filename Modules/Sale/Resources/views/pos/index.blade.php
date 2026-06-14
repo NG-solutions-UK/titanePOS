@@ -19,16 +19,72 @@
             <div class="col-12">
                 @include('utils.alerts')
             </div>
-            <div class="col-lg-7">
-                <livewire:search-product/>
-                <livewire:pos.product-list :categories="$product_categories"/>
-            </div>
-            <div class="col-lg-5">
-                <livewire:pos.checkout :cart-instance="'sale'" :customers="$customers"/>
-            </div>
+			<div class="col-12">
+
+				<ul class="nav nav-tabs" id="posTabs" role="tablist">
+
+					<li class="nav-item">
+						<a class="nav-link active"
+						   id="products-tab"
+						   data-toggle="tab"
+						   href="#products"
+						   role="tab">
+							Products
+						</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link"
+						   id="payment-tab"
+						   data-toggle="tab"
+						   href="#payment"
+						   role="tab">
+							Payment
+						</a>
+					</li>
+				</ul>
+
+				<div class="tab-content border-left border-right border-bottom p-3">
+					<!-- Products Tab -->
+					<div class="tab-pane fade show active"
+						 id="products"
+						 role="tabpanel">
+
+						<livewire:search-product />
+						<div class="card mb-3">
+							<div class="card-body">
+								<button class="btn btn-primary bi bi-check"
+										onclick="Livewire.dispatch('selectedCategory', [''])">
+									All
+								</button>
+								@foreach($product_categories as $category)
+									<button class="btn btn-outline-primary btn-lg m-2"
+											onclick="Livewire.dispatch('selectedCategory', [{{ $category->id }}])">
+										{{ $category->category_name }}
+									</button>
+								@endforeach
+							</div>
+						</div>
+
+						<livewire:pos.product-list
+							:categories="$product_categories" />
+					</div>
+					
+					<!-- Payment Tab -->
+					<div class="tab-pane fade"
+						 id="payment"
+						 role="tabpanel">
+
+						<livewire:pos.checkout
+							:cart-instance="'sale'"
+							:customers="$customers" />
+					</div>
+				</div>
+			</div>
         </div>
     </div>
 @endsection
+
 
 @push('page_scripts')
 
@@ -81,5 +137,19 @@
             });
         });
     </script>
+	
+	
 
 @endpush
+
+<style>
+#posTabs .nav-link {
+    font-size: 18px;
+    font-weight: 600;
+    padding: 15px 30px;
+}
+
+.tab-content {
+    min-height: 600px;
+}
+</style>

@@ -13,9 +13,9 @@ class ProductList extends Component
     protected $paginationTheme = 'bootstrap';
 
     protected $listeners = [
-        'selectedCategory' => 'categoryChanged',
-        'showCount'        => 'showCountChanged'
-    ];
+		'selectedCategory' => 'categoryChanged',
+		'showCount' => 'showCountChanged',
+	];
 
     public $categories;
     public $category_id;
@@ -36,6 +36,7 @@ class ProductList extends Component
     }
 
     public function categoryChanged($category_id) {
+		
         $this->category_id = $category_id;
         $this->resetPage();
     }
