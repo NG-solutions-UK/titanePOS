@@ -84,8 +84,20 @@ class ProductCart extends Component
 
             return;
         }
-
-        $this->product = $product;
+		
+		
+        $locationId = \App\Models\Location::find(session('location_id')->id);
+		//echo $locationId;
+		$productModel = Product::find($product['id']);
+		if (!$productModel) {
+			session()->flash('message', 'Product not found.');
+			return;
+		}
+		if ($productModel->location_id != $locationId) {
+			session()->flash('message', 'This product does not belong to your selected location.');
+			return;
+		}
+		$this->product = $product;
 
         $cart->add([
             'id'      => $product['id'],
