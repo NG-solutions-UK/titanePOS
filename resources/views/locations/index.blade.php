@@ -21,6 +21,7 @@
                 <th>Name</th>
                 <th>City</th>
                 <th>Country</th>
+				<th>Total Products</th>
                 <th width="180">Action</th>
             </tr>
         </thead>
@@ -31,6 +32,7 @@
                 <td>{{ $location->name }}</td>
                 <td>{{ $location->city }}</td>
                 <td>{{ $location->country }}</td>
+				<td>{{ $location->products_count }}</td>
 
                 <td>
                     <a href="{{ route('locations.show', $location->id) }}"
