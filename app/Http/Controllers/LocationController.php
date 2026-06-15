@@ -9,9 +9,12 @@ class LocationController extends Controller
 {
     public function index()
     {
-        $locations = Location::latest()->paginate(10);
+        $locations = Location::withCount('products')
+		->withSum('products', 'product_quantity')
+		->latest()
+		->paginate(10);
 
-        return view('locations.index', compact('locations'));
+		return view('locations.index', compact('locations'));
     }
 
     public function create()

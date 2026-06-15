@@ -18,11 +18,15 @@ class Location extends Model
 	
 	public function products()
 	{
-		return $this->hasMany(Product::class);
+		return $this->hasMany(
+			\Modules\Product\Entities\Product::class,
+			'location_id'
+		);
 	}
 	
 	public function sales()
 	{
 		return $this->hasMany(\Modules\Sale\Entities\Sale::class);
 	}
+	
 }
