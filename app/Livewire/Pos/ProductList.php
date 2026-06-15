@@ -26,14 +26,25 @@ class ProductList extends Component
         $this->category_id = '';
     }
 
-    public function render() {
-        return view('livewire.pos.product-list', [
-            'products' => Product::when($this->category_id, function ($query) {
-                return $query->where('category_id', $this->category_id);
-            })
-            ->paginate($this->limit)
-        ]);
-    }
+   public function render()
+	{
+		$locationId = \App\Models\Location::find(session('location_id'))->id;
+		//echo $locationId;
+
+		return view('livewire.pos.product-list', [
+			'products' => Product::query()
+
+				->when($locationId, function ($query) use ($locationId) {
+					return $query->where('location_id', $locationId);
+				})
+
+				->when($this->category_id, function ($query) {
+					return $query->where('category_id', $this->category_id);
+				})
+
+				->paginate($this->limit)
+		]);
+	}
 
     public function categoryChanged($category_id) {
 		
